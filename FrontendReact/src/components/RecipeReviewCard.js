@@ -54,7 +54,7 @@ const ExpandMore = styled((props) => {
 
 export default function RecipeReviewCard({ tareas, setEtradas }) {
   const [loader, setLoader] = useState(false);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(-1);
   const [open, setOpen] = useState(false);
   const [opciones, setOpciones] = useState(0);
   const [search, setSearch] = useState("undefined");
@@ -91,7 +91,7 @@ export default function RecipeReviewCard({ tareas, setEtradas }) {
               setEtradas(response);
               setOpen(false);
               setLoader(false);
-              Alerta("Ok","Se aguardo el registro!","success")
+              Alerta("Ok", "Se aguardo el registro!", "success")
             }
           }).catch((e) => {
             console.log(e);
@@ -182,7 +182,7 @@ export default function RecipeReviewCard({ tareas, setEtradas }) {
       </Box>
 
       {
-        tareas !== undefined && tareas.map((tarea) => (
+        tareas !== undefined && tareas.map((tarea, index) => (
           <Card key={tarea.id} sx={{ margin: 10 }}>
             <CardHeader
               avatar={
@@ -215,16 +215,15 @@ export default function RecipeReviewCard({ tareas, setEtradas }) {
             </CardContent>
             <CardActions disableSpacing>
               <ExpandMore
-                id={tarea.id}
                 expand={expanded}
-                onClick={handleExpandClick}
+                onClick={() => setExpanded(expanded === index ? -1 : index)}
                 aria-expanded={expanded}
                 aria-label="show more"
               >
                 <ExpandMoreIcon />
               </ExpandMore>
             </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <Collapse in={expanded === index} timeout="auto" unmountOnExit>
               <CardContent>
                 <Typography paragraph>
                   {tarea.contenido}
