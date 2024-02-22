@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 
 export function validaConexionInternet() {
     let valida = false;
@@ -23,3 +24,12 @@ export function limitaContenido(contenido) {
 }
 
 
+
+export function Alerta(titulo, mensaje, icono) {
+    Swal.fire({
+        title: titulo,
+        text: mensaje,
+        icon: icono,
+        confirmButtonText: 'Cool'
+    })
+}

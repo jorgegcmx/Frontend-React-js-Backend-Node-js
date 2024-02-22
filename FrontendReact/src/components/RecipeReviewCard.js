@@ -28,7 +28,8 @@ import Select from '@mui/material/Select';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import {
-  limitaContenido
+  limitaContenido,
+  Alerta
 } from "../utils/Utils";
 import {
   postEntradas,
@@ -90,7 +91,10 @@ export default function RecipeReviewCard({ tareas, setEtradas }) {
               setEtradas(response);
               setOpen(false);
               setLoader(false);
+              Alerta("Ok","Se aguardo el registro!","success")
             }
+          }).catch((e) => {
+            console.log(e);
           });
       } else {
         setValidaCampos(res);
@@ -174,6 +178,7 @@ export default function RecipeReviewCard({ tareas, setEtradas }) {
           />
           <Button variant="outlined" onClick={handelSearch}>{loader ? <CircularProgress /> : <SearchIcon />}  </Button>
         </Stack>
+
       </Box>
 
       {
@@ -270,7 +275,6 @@ export default function RecipeReviewCard({ tareas, setEtradas }) {
           <DialogActions>
             <Button onClick={handleClose}>Cancelar</Button>
             {loader ? <CircularProgress /> : <Button type="submit" onClick={handleSave}>Registrar</Button>}
-
           </DialogActions>
         </Dialog>
       </div>

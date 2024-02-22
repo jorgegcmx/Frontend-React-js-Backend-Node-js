@@ -9,7 +9,8 @@ import {
 } from "./Services/Service";
 import {
   validaConexionInternet,
-  guardalocalStorage
+  guardalocalStorage,
+  Alerta
 } from "./utils/Utils";
 
 
@@ -17,6 +18,7 @@ function App() {
   const [entradas, setEtradas] = useState([]);
 
   useEffect(() => {
+    
     if (validaConexionInternet()) {
       getEntradas()
         .then((response) => {
@@ -24,6 +26,9 @@ function App() {
             setEtradas(response);
             guardalocalStorage(response, true)
           }
+        }).catch((e) => {
+          console.log(e);     
+          Alerta("Error!","No se puede conectar al servidor","error");
         });
 
     } else {
