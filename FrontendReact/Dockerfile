@@ -4,7 +4,7 @@ FROM node:alpine AS development
 # Declaring env
 ENV NODE_ENV development
 
-#ENV REACT_APP_SERVICIO=http://localhost:3322/entradas
+ENV REACT_APP_SERVICIO=http://localhost:3322/entradas
 
 # Setting up the work directory
 WORKDIR /react-app
