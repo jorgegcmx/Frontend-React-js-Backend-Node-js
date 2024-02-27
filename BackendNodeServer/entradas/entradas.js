@@ -4,12 +4,42 @@ const router = Router();
 
 /**
  * @openapi
- * /:
+ * /entradas:
  *   get:
- *     description: Welcome to swagger-jsdoc!
+ *     description: obtiene el listado de entradas!
  *     responses:
  *       200:
- *         description: Returns a mysterious string.
+ *         description: Lista tareas.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         description: tarea id.
+ *                         example: 1
+ *                       titulo:
+ *                         type: string
+ *                         description: Descripción general.
+ *                         example: Desarrollo web
+ *                       autor:
+ *                         type: string
+ *                         description: nombre del autor.
+ *                         example: Jorge Antonio
+ *                       fecha:
+ *                         type: string
+ *                         description: fecha.
+ *                         example: 21/02/2024
+ *                       contenido:
+ *                         type: string
+ *                         description: contenido .
+ *                         example: Leanne Graham
  */
 
 router.get('/', async (req, res) => {
