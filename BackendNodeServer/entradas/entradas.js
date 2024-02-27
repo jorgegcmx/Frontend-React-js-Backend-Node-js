@@ -2,10 +2,21 @@ const { Router } = require('express');
 const queries = require('../queries/queries');
 const router = Router();
 
+/**
+ * @openapi
+ * /:
+ *   get:
+ *     description: Welcome to swagger-jsdoc!
+ *     responses:
+ *       200:
+ *         description: Returns a mysterious string.
+ */
+
 router.get('/', async (req, res) => {
     const query = await queries.obtenerTodasLasEntradas();
     return res.status(200).json(query);
 });
+
 
 router.post('/', async (req, res) => {
     const { titulo, autor, fecha, contenido } = req.body;
