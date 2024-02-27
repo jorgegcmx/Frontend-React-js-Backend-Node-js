@@ -4,7 +4,7 @@ const router = Router();
 
 /**
  * @openapi
- * /entradas:
+ * /entradas/:
  *   get:
  *     description: obtiene el listado de entradas!
  *     responses:
